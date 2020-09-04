@@ -13,11 +13,16 @@ class Servico {
     executaQuery(res, sql)
   }
 
-  adiciona(res, item) {
+  adiciona(item) {
     const { nome, preco, descricao } = item
     const sql = `INSERT INTO Servicos(nome, Preco, Descricao) VALUES('${nome}', ${preco}, '${descricao}')`
 
-    executaQuery(res, sql)
+    return executaQuery(sql).then(resposta => ({
+      id: resposta.insertId,
+      nome,
+      preco,
+      descricao
+    }))
   }
 
   atualiza(res, novoItem, id) {
