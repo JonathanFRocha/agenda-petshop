@@ -7,4 +7,11 @@ type Servico {
 
 type Mutation {
   adicionarServico(nome: String!, preco: Float!, descricao:String): Servico!
+  atualizaServico(id: ID!, nome: String!, preco:Float!, descricao: String): Servico!
+  deletaServico(id:ID!): ID!
+}
+
+type Query {
+  servicos: [Servico!]!
+  servico (id: ID!): Servico!
 }
